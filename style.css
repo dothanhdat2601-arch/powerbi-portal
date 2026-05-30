@@ -1,0 +1,370 @@
+:root {
+    --blue:   #1565c0;
+    --blue-bg: #e3f2fd;
+    --blue-mid: #1976d2;
+
+    --green:  #2e7d32;
+    --green-bg: #e8f5e9;
+    --green-mid: #388e3c;
+
+    --orange: #e65100;
+    --orange-bg: #fff3e0;
+    --orange-mid: #f57c00;
+
+    --purple: #6a1b9a;
+    --purple-bg: #f3e5f5;
+    --purple-mid: #7b1fa2;
+
+    --text:   #1a202c;
+    --text-2: #4a5568;
+    --text-3: #718096;
+    --bg:     #f0f4f8;
+    --white:  #ffffff;
+    --border: #e2e8f0;
+    --radius: 14px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* ── HEADER ──────────────────────────────────── */
+.header {
+    background: linear-gradient(135deg, #0d3c7a 0%, #1565c0 55%, #1976d2 100%);
+    padding: 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    right: 120px; bottom: -100px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-mark {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.logo-mark span {
+    display: block;
+    width: 8px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px;
+}
+.logo-mark span:nth-child(1) { height: 14px; }
+.logo-mark span:nth-child(2) { height: 22px; background: #fff; }
+.logo-mark span:nth-child(3) { height: 18px; }
+
+.header-text {
+    flex: 1;
+}
+
+.header-text h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.8px;
+    line-height: 1.1;
+}
+
+.header-text p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 5px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+.header-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 12px 20px;
+    flex-shrink: 0;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+}
+
+/* ── GRID ───────────────────────────────────── */
+.container {
+    max-width: 1400px;
+    margin: 36px auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* ── CARDS ──────────────────────────────────── */
+.team-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.4s ease both;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.team-card:nth-child(1) { animation-delay: 0.05s; }
+.team-card:nth-child(2) { animation-delay: 0.10s; }
+.team-card:nth-child(3) { animation-delay: 0.15s; }
+.team-card:nth-child(4) { animation-delay: 0.20s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* card header accent strip */
+.team-card::before {
+    content: '';
+    display: block;
+    height: 3px;
+}
+.s-blue::before   { background: var(--blue-mid); }
+.s-green::before  { background: var(--green-mid); }
+.s-orange::before { background: var(--orange-mid); }
+.s-purple::before { background: var(--purple-mid); }
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.s-blue   .card-icon { background: var(--blue-bg);   color: var(--blue); }
+.s-green  .card-icon { background: var(--green-bg);  color: var(--green); }
+.s-orange .card-icon { background: var(--orange-bg); color: var(--orange); }
+.s-purple .card-icon { background: var(--purple-bg); color: var(--purple); }
+
+.card-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--text);
+    line-height: 1.1;
+}
+
+.card-count {
+    font-size: 13px;
+    color: var(--text-3);
+    font-weight: 400;
+    margin-top: 3px;
+    display: block;
+}
+
+/* ── REPORT LINKS ───────────────────────────── */
+.report-list {
+    padding: 14px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.report-list::-webkit-scrollbar {
+    width: 4px;
+}
+.report-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+.report-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+.report-list::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e0;
+}
+
+.report-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 400;
+    transition: background 0.15s, color 0.15s;
+    position: relative;
+}
+
+.report-list a:hover {
+    background: var(--bg);
+}
+
+.s-blue   .report-list a:hover { background: var(--blue-bg); color: var(--blue); }
+.s-green  .report-list a:hover { background: var(--green-bg); color: var(--green); }
+.s-orange .report-list a:hover { background: var(--orange-bg); color: var(--orange); }
+.s-purple .report-list a:hover { background: var(--purple-bg); color: var(--purple); }
+
+.link-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: var(--bg);
+    flex-shrink: 0;
+    color: var(--text-3);
+    transition: background 0.15s, color 0.15s;
+}
+
+.s-blue   .report-list a:hover .link-icon { background: rgba(21,101,192,0.15); color: var(--blue); }
+.s-green  .report-list a:hover .link-icon { background: rgba(46,125,50,0.15); color: var(--green); }
+.s-orange .report-list a:hover .link-icon { background: rgba(230,81,0,0.15); color: var(--orange); }
+.s-purple .report-list a:hover .link-icon { background: rgba(106,27,154,0.15); color: var(--purple); }
+
+.report-list a span {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.arrow {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+    color: var(--text-3);
+    flex-shrink: 0;
+}
+
+.report-list a:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ── FOOTER ─────────────────────────────────── */
+.footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--text-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dot { opacity: 0.4; }
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+        margin: 20px auto;
+    }
+
+    .header-inner {
+        flex-wrap: wrap;
+        padding: 22px 0;
+        gap: 14px;
+    }
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+    .header-stats {
+        width: 100%;
+        justify-content: center;
+    }
+}
